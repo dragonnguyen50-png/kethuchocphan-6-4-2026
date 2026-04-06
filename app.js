@@ -1,14 +1,20 @@
 const movies = [
-    { id: 1, title: "Inception", year: 2010, genres: ["Hành động", "Khoa học viễn tưởng"], director: "Christopher Nolan", desc: "Kẻ trộm đánh cắp bí mật thông qua công nghệ chia sẻ giấc mơ.", poster: "images/inception.jpg" },
-    { id: 2, title: "The Dark Knight", year: 2008, genres: ["Hành động", "Tội phạm"], director: "Christopher Nolan", desc: "Batman đối đầu với Joker.", poster: "images/dark-knight.jpg" },
+    { id: 1, title: "Inception", year: 2010, genres: ["Hành động", "Khoa học viễn tưởng"], director: "Christopher Nolan", desc: "Kẻ trộm đánh cắp bí mật...", poster: "images/inception.webp" },
+    { id: 2, title: "The Dark Knight", year: 2008, genres: ["Hành động", "Tội phạm"], director: "Christopher Nolan", desc: "Batman đối đầu với Joker.", poster: "images/dark-knight.webp" },
     // Thêm các phim khác vào đây...
 ];
-
 const movieGrid = document.getElementById('movie-grid');
 const genreContainer = document.getElementById('genre-filters');
 const searchInput = document.getElementById('search-input');
 const themeToggle = document.getElementById('theme-toggle');
 
+// Kiểm tra xem các phần tử có tồn tại không trước khi chạy
+if (movieGrid && genreContainer && searchInput && themeToggle) {
+    initGenres();
+    displayMovies(movies);
+} else {
+    console.error("Không tìm thấy các ID cần thiết trong HTML!");
+}
 // 1. Hiển thị dữ liệu
 function displayMovies(data) {
     movieGrid.innerHTML = data.map(movie => `
